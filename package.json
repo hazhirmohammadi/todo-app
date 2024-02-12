@@ -2,9 +2,10 @@
   "name": "mvc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
     "awesome": "^0.0.7",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.2",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "font": "^0.0.4",
     "node": "^21.6.1",
