@@ -14,7 +14,7 @@ app.set("views","views");
 
 
 //statics
-// setStatics(app);
+setStatics(app);
 //Routes
 
 app.get("/",(req, res) =>{

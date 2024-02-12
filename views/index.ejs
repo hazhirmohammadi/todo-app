@@ -1,17 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/styles">
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="/css/font-awesome.css">
-    <title><%= pageTitle%></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+    <title><%= pageTitle %></title>
 </head>
-<body>
-<button class="btn text-bg-danger">click me !</button>
-<p class="text-danger">ss</p>
+<body class="rtl">
+<div class="form-group">
+    <h1 class="text-center  alert-info alert w-50 mx-auto mt-2">tasks</h1>
+    <form
+            action="/admin/add-todo"
+            role="form"
+            class="row w-50 justify-content-center mx-auto"
+            method="POST"
+    >
+        <div class="input-group g-1 mb-2">
+            <input
+                    type="text"
+                    name="todo"
+                    class="form-control w-50"
+                    placeholder="today tasks"
+            />
+            <div class="input-group-prepend">
+                <button type="submit" class="mx-1  btn btn-primary fa fa-plus">add</button>
+            </div>
+        </div>
+    </form>
+    <div class="mx-auto w-50 mb-3 alert alert-primary row">
+        <p class="d-inline col">Done tasks : <span class="badge badge-success badge-pill">0<!-- CompletedTodos --></span></p>
+        <p class="d-inline col">Today's remaining tasks : <span class="badge badge-warning badge-pill">0<!-- RemainingTodos --></span></p>
+    </div>
+</div>
 </body>
 </html>
