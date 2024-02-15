@@ -3,6 +3,7 @@ const path = require("path");
 
 const rootDir = require("../utils/path");
 
+//create route file
 const filePath = path.join(rootDir, 'data', 'todos.json');
  class Todo {
     constructor(id, text, completed = false) {
@@ -13,7 +14,13 @@ const filePath = path.join(rootDir, 'data', 'todos.json');
 
     save(callback) {
         fs.writeFile(filePath, JSON.stringify(this), (err) => {
-            if (err) callback(err);
+            console.log(11)
+            if (err) {
+                callback(err)
+            }
+            else {
+
+            }
         });
     }
 

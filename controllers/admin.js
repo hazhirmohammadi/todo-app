@@ -1,14 +1,29 @@
 const Todo = require("../model/todo");
 
-exports.addTodo = (res, req) => {
-    if (!req.body.todo) return res.redirect("/");
+exports.addTodo = (req,res) => {
+    try {
+        console.log(5464)
+        console.log(req)
+        if (!req.body||typeof req.body.todo === 'undefined') {
 
-    const todo = new Todo(Math.floor(Math.random() * 1000), req.body.todo);
+            throw new Error('errorrrrrrr 111')
 
-    todo.save(err => {
-        if (!err) res.redirect("/");
-        else console.log(err)
-    })
+        }else{
+             res.redirect("/");
+        }
+
+        const todo = new Todo(Math.floor(Math.random() * 1000), req.body.todo);
+
+        todo.save(err => {
+
+            if (!err) res.redirect("/");
+            else console.log(err)
+        })
+    } catch (e) {
+
+    }
+
+
 }
 
 
