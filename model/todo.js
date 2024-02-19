@@ -5,7 +5,8 @@ const rootDir = require("../utils/path");
 
 //create route file
 const filePath = path.join(rootDir, 'data', 'todos.json');
- class Todo {
+
+class Todo {
     constructor(id, text, completed = false) {
         this.id = id;
         this.text = text;
@@ -13,14 +14,23 @@ const filePath = path.join(rootDir, 'data', 'todos.json');
     }
 
     save(callback) {
-        fs.writeFile(filePath, JSON.stringify(this), (err) => {
-            console.log(11)
-            if (err) {
-                callback(err)
-            }
-            else {
+        fs.readFile(filePath, (err, fileContent) => {
+            // if (err) return [];
+            const todos = JSON.parse(fileContent);
+            todos.push(this);
 
-            }
+            fs.writeFile(filePath, JSON.stringify(todos), (err) => {
+                if (err) callback(err)
+                else return callback([]);
+            });
+        });
+    }
+
+    static fetchAll(callback) {
+        fs.readFile(filePath, (err, fileContent) => {
+            if (err) return [];
+            const todos = JSON.parse(fileContent);
+            return callback(todos);
         });
     }
 
