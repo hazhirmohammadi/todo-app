@@ -44,6 +44,20 @@ class Todo {
         })
     }
 
+    static setTodoToComplete(id, callback) {
+        fs.readFile(filePath, (err, fileContent) => {
+            const todos = JSON.parse(fileContent);
+            const todoIndex = totos.findIndex(t => t.id === id);
+            const todo = todos[todoIndex];
+            todo.completed = true;
+            todos[todoIndex] = todo;
+
+            fs.writeFile(filePath, JSON.stringify(todos), (err) => {
+                callback(err);
+            });
+        })
+    }
+
 }
 
 
