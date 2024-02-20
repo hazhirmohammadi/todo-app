@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/font-awesome.css"/>
     <title><%= pageTitle %></title>
 </head>
@@ -30,9 +30,31 @@
         </div>
     </form>
     <div class="mx-auto w-50 mb-3 alert alert-primary row">
-        <p class="d-inline col">Done tasks : <span class="badge badge-success badge-pill">0<!-- CompletedTodos --></span></p>
-        <p class="d-inline col">Today's remaining tasks : <span class="badge badge-warning badge-pill">0<!-- RemainingTodos --></span></p>
+        <p class="d-inline col">Done tasks : <span class="badge badge-success badge-pill">0
+                <!-- CompletedTodos --></span></p>
+        <p class="d-inline col">Today's remaining tasks : <span class="badge badge-warning badge-pill">0
+                <!-- RemainingTodos --></span></p>
     </div>
+    <% if(todos.length > 0) { %>
+        <ul class="list-unstyled" id="todo">
+            <% for(let todo of todos) { %>
+                <li>
+                    <div class="alert alert-secondary">
+                        <%= todo.text %>
+                        <a href="/admin/delete-todo/<%= todo.id%>" class="p-2" style="color: red">x</a>
+                        <a href="/admin/completed-todo" class="p-2" style="color: green">✅</a>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    <% } else { %>
+        <div class="alert alert-warning w-50 mx-auto" role="alert">
+            <h4 class="alert-heading">todo list is Empty</h4>
+            <p>Empty</p>
+            <hr>
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="fa fa-heart" style="color: red"/></p>
+        </div>
+    <% } %>
 </div>
 </body>
 </html>

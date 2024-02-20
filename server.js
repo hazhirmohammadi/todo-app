@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 
 const {setStatics} = require("./utils/statics.js");
 const adminRoutes=require("./routes/admin")
+const indexRoutes =require("./routes/index")
 
 const app = express();
 //middlewares
@@ -18,9 +19,9 @@ app.set("views","views");
 //statics
 setStatics(app);
 //Routes
-console.log(100)
+app.use(indexRoutes)
 app.use("/admin",adminRoutes)
-console.log(101)
+
 app.get("/",(req, res) =>{
     console.log(102)
     // console.log("req clint=>",req)
